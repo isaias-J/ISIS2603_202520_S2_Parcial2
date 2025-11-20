@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { Movie } from '../Movie';
 
@@ -17,7 +17,8 @@ export class MovieDetailComponent implements OnInit, OnChanges {
   constructor(
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -56,5 +57,9 @@ export class MovieDetailComponent implements OnInit, OnChanges {
     } else {
       this.safeTrailerUrl = null;
     }
+  }
+
+  goBack(): void {
+    this.router.navigate(['/movie']);
   }
 }

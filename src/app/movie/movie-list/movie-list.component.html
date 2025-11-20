@@ -1,35 +1,25 @@
-<div>
-  <div>
-    @if (selected) {
-    <div *ngIf="selected">
-      <app-movie-detail [movie]="selectedMovie"></app-movie-detail>
+<div class="container mt-4">
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="movies-header bg-light py-2 mb-3 text-center">
+        <h4 class="mb-0">Movies</h4>
+      </div>
     </div>
-    }
-    <table>
-      <thead>
-        <tr>
-          <th>Titulo</th>
-          <th>Imagen</th>
-          <th>Duracion en minutos</th>
-          <th>Director</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for(movie of movies; track movie.id){
-        <tr (click)="onSelect(movie)">
-          <td>{{ movie.titulo }}</td>
-          <td>
-            <img
-              class="movie-img"
-              [src]="movie.poster"
-              alt="{{ movie.poster }}"
-            />
-          </td>
-          <td>{{ movie.duracion_minutos }} min</td>
-          <td>{{ movie.director }} </td>
-        </tr>
-        }
-      </tbody>
-    </table>
+  </div>
+
+  <div class="movie-grid">
+    <div class="movie-card-column" *ngFor="let movie of movies">
+      <div class="card h-100 movie-card" (click)="onSelect(movie)" style="cursor: pointer;">
+        <img [src]="movie.poster" class="card-img-top" alt="{{movie.titulo}}"/>
+        <div class="card-body d-flex flex-column">
+          <h6 class="card-title">{{ movie.titulo }}</h6>
+          <p class="card-text mb-1 small text-muted">{{ movie.director }}</p>
+          <p class="card-text mb-2 small">{{ movie.duracion_minutos }} min</p>
+          <div class="mt-auto">
+            <button class="btn btn-secondary w-100 btn-sm" (click)="onSelect(movie); $event.stopPropagation();">Detalle</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
