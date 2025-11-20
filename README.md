@@ -1,4 +1,4 @@
 # Parcial Práctico 2
 
-- Nombre:
-- código:
+- Nombre: Isaias Jose Macia Insignares
+- código: 202415752
